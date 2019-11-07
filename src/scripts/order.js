@@ -1,26 +1,32 @@
-export {placeOrder};
+// export {placeOrder};
 
-function placeOrder() {
+// function placeOrder() {
 
-    let orderBtn = document.querySelector(".rdy-btn");
-    let orderBox = document.querySelector(".order-section");
-    let closeBtn = document.querySelector(".close-btn");
+//     let orderBtn = document.querySelector(".rdy-btn");
+//     let roomBox = document.querySelector(".room-section");
+//     let styleBox = document.querySelector(".style-section");
+//     let closeBtn = document.querySelectorAll(".close-btn");
 
-    orderBtn.addEventListener("click", function(){
+//     orderBtn.addEventListener("click", function(){
 
-        orderBtn.classList.add("hide");
-        orderBox.classList.remove("hide");
+//         orderBtn.classList.add("hide");
+//         roomBox.classList.remove("hide");
 
-    });
+//     });
 
-    closeBtn.addEventListener("click", function(){
+//     closeBtn.addEventListener("click", function(){
 
-        orderBox.classList.add("hide");
-        orderBtn.classList.remove("hide");
+//         styleBox.classList.add("hide");
+//         orderBtn.classList.remove("hide");
 
-    });
+//     });
 
 
-}
+// }
+
+// function closeButton() {
+
+    
+// }
 
 
