@@ -88,29 +88,17 @@ function placeOrder() {
 
     let orderBtn = document.querySelector(".rdy-btn");
     let roomBox = document.querySelector(".room-section");
-    let styleBox = document.querySelector(".style-section");
-    let closeBtn = document.querySelector(".close-btn");
 
     orderBtn.addEventListener("click", function(){
 
+        
         roomBox.classList.remove("hide");
         chooseRoom();
 
     });
 
-    closeBtn.addEventListener("click", function(){
-
-        roomBox.classList.add("hide");
-
-    });
-
-
 }
 
-function closeButton() {
-
-    
-}
 
 
 function chooseRoom() {
@@ -119,46 +107,76 @@ function chooseRoom() {
     let styleBox = document.querySelector(".style-section");
     let rooms = document.querySelectorAll(".room-section img");
     let styles = document.querySelectorAll(".style-section img");
+    let closeBtns = document.querySelectorAll(".close-btn");
+    let areaBox = document.querySelector(".area-section");
+    let input = document.querySelector("input");
     let myArr = [];
 
     for (let room of rooms) {
         room.addEventListener("click", event => {
-
             let myRoom = event.target.classList.value;
+
             //myObject(myRoom);
-            myArr.push(myRoom);
-            roomBox.classList.add("hide");
-            styleBox.classList.remove("hide");
-            console.log(myArr);
+            if (myArr.length == 1) {
+                myArr.pop();
+                myArr.push(myRoom);
+                roomBox.classList.add("hide");
+                styleBox.classList.remove("hide");
+            }else {
+                myArr.push(myRoom);
+                roomBox.classList.add("hide");
+                styleBox.classList.remove("hide");
+            }
+       
 
         });
     }
 
     for (let style of styles) {
         style.addEventListener("click", event => {
-
             let myStyle = event.target.classList.value;
-            myArr.push(myStyle);
-            styleBox.classList.add("hide");
-            console.log(myArr);
+            if (myArr.length == 2){
+                myArr.pop();
+                myArr.push(myStyle);
+                styleBox.classList.add("hide");
+                areaBox.classList.remove("hide");
+            }else {
+                myArr.push(myStyle);
+                styleBox.classList.add("hide");
+                areaBox.classList.remove("hide");
+            }
+        });
+       
+    }
+
+    input.addEventListener("change", function(){
+
+            let myArea = input.value;
+            myArr.push(myArea);
+            //console.log(myArr);
+            myObject(myArr);
+    });
+
+    for (let button of closeBtns) {
+        button.addEventListener("click", event =>{
+
+                roomBox.classList.add("hide");
+                styleBox.classList.add("hide");
+                areaBox.classList.add("hide");
 
         });
-
+        
     }
-    
-
-
-
 
 }
 
-function myObject(myRoom, myStyle, myArea) {
+function myObject(myArr) {
 
     let myChoice = {
 
-        Room: myRoom,
-        style: myStyle,
-        m2: myArea
+        Room: myArr[0],
+        style: myArr[1],
+        m2: myArr[2]
     };
     console.log(myChoice);
 }
