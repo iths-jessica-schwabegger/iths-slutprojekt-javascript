@@ -17,22 +17,59 @@ function placeOrder() {
 
 function confirmOrder(myArr) {
     let i = 0;
-    let roomObjects = document.querySelectorAll(".final-section p");
-    for(let object of roomObjects) {
-        console.log(roomObjects);
+    let articles = document.querySelectorAll(".final-section article");
+    
+    for(let article of articles) {
 
-        if (i >= myArr.length){
-            
+        let oldParagraphs = article.querySelectorAll(".content");
+
+        for (let paragraph of oldParagraphs) {
+            paragraph.remove();
         }
-        
         if (i <= myArr.length -1) {
-            object.innerText = object.innerHTML + myArr[i];
+
+            let p = document.createElement("p");
+            p.classList.add("content");
+            article.appendChild(p);
+            p.innerText = myArr[i].toUpperCase();
+            p.style.color = "rgb(53, 51, 51)";
             i++;
         }else {
-            object.innerText = object.innerHTML + "hej";
+            let p = document.createElement("p");
+            p.classList.add("content");
+            article.appendChild(p);
+            // getPrice(myArr);
+            p.innerText = getPrice(myArr);
+            p.style.color = "rgb(53, 51, 51)";
         }
     }
+}
 
+function getPrice(myArr) {
+
+    const priceOffer = {
+
+        rooms: {
+            bedroom: 800,
+            kitchen: 700,
+            bathroom: 500,
+            living_room: 1000,
+            kids_room: 800,
+            entrance: 500
+        },
+
+        area: {
+
+            1: 300, 2: 300, 3: 350, 4: 400, 5: 400, 6: 500, 7: 550, 8: 600, 9: 600,
+            10: 650, 11: 750, 12: 800, 13: 1000, 14: 1100, 15: 1250,
+
+        }
+    };
+
+    let priceRoom = priceOffer.rooms[myArr[0]];
+    let priceArea = priceOffer.area[myArr[2]];
+    let totalPrice = priceRoom + priceArea;
+    return totalPrice;
 }
 
 function chooseRoom() {
@@ -51,33 +88,21 @@ function chooseRoom() {
         room.addEventListener("click", event => {
             let myRoom = event.target.classList.value;
 
-            //myObject(myRoom);
-            if (myArr.length == 1) {
-                // myArr.pop();
-                // myArr.push(myRoom);
-                roomBox.classList.add("hide");
-                styleBox.classList.remove("hide");
-            }else {
                 myArr.push(myRoom);
                 roomBox.classList.add("hide");
                 styleBox.classList.remove("hide");
-            }
+        
         });
     }
 
     for (let style of styles) {
         style.addEventListener("click", event => {
             let myStyle = event.target.classList.value;
-            if (myArr.length == 2){
-                // myArr.pop();
-                // myArr.push(myStyle);
-                styleBox.classList.add("hide");
-                areaBox.classList.remove("hide");
-            }else {
+
                 myArr.push(myStyle);
                 styleBox.classList.add("hide");
                 areaBox.classList.remove("hide");
-            }
+  
         });
     }
 
@@ -85,7 +110,6 @@ function chooseRoom() {
 
             let myArea = input.value;
             myArr.push(myArea);
-            //myObject(myArr);
             areaBox.classList.add("hide");
             finalBox.classList.remove("hide");
 
@@ -101,35 +125,11 @@ function chooseRoom() {
                 areaBox.classList.add("hide");
                 finalBox.classList.add("hide");
 
+
         });
     }
 }
 
 
-// Behövdes ej, ville mest bara göra ett objekt :)))))
-// function myObject(myArr) {
-
-//     let myChoice = {
-
-//         Room: myArr[0],
-//         style: myArr[1],
-//         m2: myArr[2]
-//     };
-//     console.log(myChoice);
-// }
-
-
-let priceOffer = {
-
-    Rooms: {
-        Bedroom: 800,
-        Kitchen: 700,
-        Bathroom: 500,
-        Living_room: 1000,
-        Kids_room: 800,
-        Entrance: 500
-    }
-
-};
 
 
