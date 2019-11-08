@@ -104,7 +104,7 @@ nav {
   }
 }
 
-.room-section, .style-section, .area-section {
+.room-section, .style-section, .area-section, .final-section {
   width: 60rem;
   height: 40rem;
   background-color: lightgrey;
@@ -127,13 +127,6 @@ nav {
     input {
       height: 30%;
       font-size: 1rem;
-    }
-
-    .area-section, p:first-of-type {
-      justify-self: end;
-      margin: 0.5rem 1rem 0 0;
-      font-size: 1.5rem;
-      color: grey;
     }
 
      img{
@@ -182,4 +175,42 @@ nav {
     }
   }
 
+}
+
+.area-section {
+
+  p:first-of-type {
+  justify-self: end;
+  margin: 0.5rem 1rem 0 0;
+  font-size: 1.5rem;
+  color: grey;
+  }
+}
+
+.final-section {
+
+  p { 
+    font-size: 1.3rem;
+    color: grey;
+  }
+  .grid {
+    grid-template-rows: 25% 12.5% 12.5% 12.5% 12.5% 25%;
+
+  }
+  .p1 {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  .p2 {
+    grid-column-start: 2;
+    grid-row-start: 3;
+  }
+  .p3 {
+    grid-column-start: 2;
+    grid-row-start: 4;
+  }
+  .p4 {
+    grid-column-start: 2;
+    grid-row-start: 5;
+  }
 }
