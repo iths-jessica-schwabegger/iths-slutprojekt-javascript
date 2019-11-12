@@ -1,13 +1,16 @@
 export {placeOrder};
+import {fadeIn, slideIn} from './index';
 
 function placeOrder() {
 
     let orderBtn = document.querySelector(".rdy-btn");
     let roomBox = document.querySelector(".room-section");
+    slideIn(orderBtn);
 
     orderBtn.addEventListener("click", function(){  
         roomBox.classList.remove("hide");
         chooseRoom();
+        fadeIn(roomBox);
 
     });
 }
@@ -85,11 +88,13 @@ function chooseRoom() {
 
     for (let room of rooms) {
         room.addEventListener("click", event => {
+            
             let myRoom = event.target.classList.value;
 
                 myArr.push(myRoom);
                 roomBox.classList.add("hide");
                 styleBox.classList.remove("hide");
+                fadeIn(styleBox);
         
         });
     }
@@ -101,6 +106,7 @@ function chooseRoom() {
                 myArr.push(myStyle);
                 styleBox.classList.add("hide");
                 areaBox.classList.remove("hide");
+                fadeIn(areaBox);
   
         });
     }
@@ -125,14 +131,14 @@ function chooseRoom() {
                 myArr.push(myArea);
                 areaBox.classList.add("hide");
                 finalBox.classList.remove("hide");
-
+                fadeIn(finalBox);
                 confirmOrder(myArr);
             }
 
     });
 
     for (let button of closeBtns) {
-        button.addEventListener("click", event =>{
+        button.addEventListener("click", function(){
 
                 roomBox.classList.add("hide");
                 styleBox.classList.add("hide");

@@ -1,16 +1,6 @@
-export {imgSlide};
-import anime from 'animejs';
+export {imgSlide, fadeIn};
+import {fadeIn} from './index';
 
-function fadeIn(target) {
-
-    anime({
-      targets: target,
-      opacity: [0, 1],
-      easing: "linear",
-      duration: 2000
-
-    });
-}
 
 function imgSlide() {
 

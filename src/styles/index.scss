@@ -53,22 +53,7 @@ body {
     height: 20rem;
     width: 20rem;
     border-radius: 50%;
-    // animation: fade 15s infinite;
   }
-  // @keyframes fade {
-  //   100% {
-  //     opacity: 1;
-  //   }
-  //   75% {
-  //     opacity: 1;
-  //   }
-  //   25% {
-  //     opacity: 1;
-  //   }
-  //   0% {
-  //     opacity: 0;
-  //   }
-  //  }
   .fade-in {
     opacity: 0;
     transition: opacity 250ms ease-in;
@@ -108,8 +93,9 @@ nav {
 }
 
 .btn-section {
-   display: flex;
-   justify-content: center;
+  //  display: flex;
+  //  justify-content: flex-start;
+   width: 100vw;
 
   button{
     padding: 1.5rem;
@@ -247,4 +233,9 @@ nav {
   justify-self: center;
   font-size: 2rem;
   color: grey;
+}
+
+div {
+  display: flex;
+  justify-content: center;
 }
