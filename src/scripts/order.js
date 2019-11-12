@@ -5,14 +5,11 @@ function placeOrder() {
     let orderBtn = document.querySelector(".rdy-btn");
     let roomBox = document.querySelector(".room-section");
 
-    orderBtn.addEventListener("click", function(){
-
-        
+    orderBtn.addEventListener("click", function(){  
         roomBox.classList.remove("hide");
         chooseRoom();
 
     });
-
 }
 
 function confirmOrder(myArr) {
@@ -25,15 +22,16 @@ function confirmOrder(myArr) {
 
         for (let paragraph of oldParagraphs) {
             paragraph.remove();
+
         }
         if (i <= myArr.length -1) {
-
             let p = document.createElement("p");
             p.classList.add("content");
             article.appendChild(p);
-            p.innerText = myArr[i].toUpperCase();
+            p.innerText = removeUnderline(myArr[i]).toUpperCase();
             p.style.color = "rgb(53, 51, 51)";
             i++;
+
         }else {
             let p = document.createElement("p");
             p.classList.add("content");
@@ -72,6 +70,7 @@ function getPrice(myArr) {
     return totalPrice;
 }
 
+
 function chooseRoom() {
 
     let roomBox = document.querySelector(".room-section");
@@ -109,11 +108,26 @@ function chooseRoom() {
     input.addEventListener("change", function(){
 
             let myArea = input.value;
-            myArr.push(myArea);
-            areaBox.classList.add("hide");
-            finalBox.classList.remove("hide");
+            let oldErrors = document.querySelectorAll(".error");
+            
+            for(let error of oldErrors){
+                error.remove();
+            }
+            if (myArea > 15) {
 
-            confirmOrder(myArr);
+                let areaBox = document.querySelector(".area-section .grid");
+                let error = document.createElement("p");
+                error.classList.add("gridmid");
+                error.classList.add("error");
+                areaBox.appendChild(error).innerText = "That room is too big!";
+
+            }else {
+                myArr.push(myArea);
+                areaBox.classList.add("hide");
+                finalBox.classList.remove("hide");
+
+                confirmOrder(myArr);
+            }
 
     });
 
@@ -125,11 +139,23 @@ function chooseRoom() {
                 areaBox.classList.add("hide");
                 finalBox.classList.add("hide");
 
-
         });
     }
 }
 
+function removeUnderline(myStr) {
 
+    let newString = "";
+
+    for (let i = 0; i < myStr.length; i++) {
+        if (myStr[i] != "_") {
+            newString = newString + myStr[i];
+        }else {
+            newString = newString + " ";
+        }
+    }
+    return newString;
+
+}
 
 

@@ -219,3 +219,10 @@ nav {
     grid-row-start: 5;
   }
 }
+
+.gridmid {
+  grid-area: mid5;
+  justify-self: center;
+  font-size: 2rem;
+  color: grey;
+}

@@ -1,54 +1,8 @@
 export {imgSlide};
-let index = 0;
-function nextBtn(index, list) {
-    
-    if (index >= list.length -1) {
-
-        index = 0 ;
-        list[index].classList.remove("hide");
-        list[index+1].classList.add("hide");
-
-
-    }else {
-        list[index].classList.add("hide");
-        list[index+1].classList.remove("hide");
-    }
-
-    
-    console.log(index);
-    console.log(list[index]);
-
-}
-
-function previousBtn(index, list) {
-
-  
-    if (index <= 0) {
-        index = list.length-1;
-
-        list[index].classList.remove("hide");
-        list[0].classList.add("hide");
-
-    }else {
-        list[index].classList.add("hide");
-        list[index-1].classList.remove("hide");
-
-    }
-    console.log(index);
-
-    console.log(list[index]);
-
-
-}
-
-function newImg(){
-
-
-}
 
 function imgSlide() {
 
-    
+    let index = 0;
     console.log(index);
     let leftBtn = document.querySelector(".left-btn");
     let rightBtn = document.querySelector(".right-btn");
@@ -57,7 +11,20 @@ function imgSlide() {
     rightBtn.addEventListener("click", function(){
 
         index++;
-        nextBtn(index, images);
+
+        if (index > images.length -1) {
+
+            index = 0;
+            images[index].classList.remove("hide");
+            images[images.length-1].classList.add("hide");
+    
+        }else {
+            
+            images[index].classList.remove("hide");
+            images[index-1].classList.add("hide");
+    
+        }
+        console.log(index);
         
 
      });
@@ -65,7 +32,20 @@ function imgSlide() {
      leftBtn.addEventListener("click", function(){
 
         index--;
-        previousBtn(index, images);
+        if (index < 0) {
+            index = images.length -1;
+    
+            images[index].classList.remove("hide");
+            images[0].classList.add("hide");
+            
+    
+        }else {
+            images[index].classList.remove("hide");
+            images[index+1].classList.add("hide");
+    
+        }
+    
+        console.log(index);
     
 
      });
