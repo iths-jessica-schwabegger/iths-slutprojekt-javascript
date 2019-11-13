@@ -29,6 +29,19 @@ async function renderUser() {
 
     userName.innerText = list[0].name.first + " " + list[0].name.last;
 
+    randomStarRating();
 
+}
 
+function randomStarRating() {
+    let starList = document.querySelectorAll(".star");
+    let random = Math.floor(Math.random() * 5);
+    let index = 0;
+
+    for (let star of starList) {
+        if (index <= random) {
+            star.classList.add("clicked");
+        }
+        index++;
+    }
 }
