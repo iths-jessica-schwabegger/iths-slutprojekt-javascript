@@ -15,6 +15,7 @@ body {
     font-family: 'Comfortaa';
     font-weight: normal;
     color: grey;
+    text-align: center;
   }
   .wrapper {
     display: flex;
@@ -238,4 +239,44 @@ nav {
 div {
   display: flex;
   justify-content: center;
+}
+
+.review-box {
+  border: 1px solid grey;
+  margin: 4rem 0;
+  display: flex;
+  align-items: center;
+
+  img {
+    border: 1px solid grey;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 1rem 1rem;
+  }
+
+  .star {
+    color: gold;
+    font-size: 1.5rem;
+    
+  }
+  .star::before{
+    content: '\2606';
+    cursor: pointer;
+  }
+  .star.clicked::before {
+    content: '\2605'
+  }
+}
+
+.stars {
+  display: flex;
+
+}
+
+.review-info {
+  width: 40rem;
+  p {
+    margin: 0;
+  }
 }

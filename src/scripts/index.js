@@ -3,6 +3,7 @@ import {imgSlide} from './slider';
 import {placeOrder} from './order';
 import anime from 'animejs';
 export {fadeIn, slideIn};
+import {renderUser} from './review';
 
 
 if(window.location.pathname == "/order.html") {
@@ -10,6 +11,9 @@ if(window.location.pathname == "/order.html") {
 
 }else if(window.location.pathname == "/index.html") {
     imgSlide();
+}else if(window.location.pathname == "/review.html") {
+
+    renderUser();
 }
 
 
@@ -28,7 +32,7 @@ function fadeIn(target) {
 function slideIn(target) {
     anime({
         targets: target,
-        translateX: 370,
+        translateX: 550,
         delay: 1000,
         opacity: [0, 1],
       });
