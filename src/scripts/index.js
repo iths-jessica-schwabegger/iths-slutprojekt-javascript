@@ -5,13 +5,18 @@ import anime from 'animejs';
 export {fadeIn, slideIn};
 import {renderUser} from './review';
 
+console.log(window.location.pathname)
 
-if(window.location.pathname == "/order.html") {
+
+let path = window.location.pathname.split("/");
+console.log(path);
+
+if(path[1] == "order.html") {
     placeOrder();
 
-}else if(window.location.pathname == "/index.html") {
+}else if(path[1] == "index.html" || path[1] == "") {
     imgSlide();
-}else if(window.location.pathname == "/review.html") {
+}else if(path[1] == "review.html") {
 
     renderUser();
 }

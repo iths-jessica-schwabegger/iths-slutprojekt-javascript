@@ -73,7 +73,6 @@ function getPrice(myArr) {
     return totalPrice;
 }
 
-
 function chooseRoom() {
 
     let roomBox = document.querySelector(".room-section");
