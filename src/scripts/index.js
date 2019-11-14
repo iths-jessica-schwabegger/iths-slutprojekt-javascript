@@ -5,26 +5,16 @@ import anime from 'animejs';
 export {fadeIn, slideIn};
 import {renderUser} from './review';
 
-console.log(window.location.pathname)
 
 
 let path = window.location.pathname.split("/");
-console.log(path);
 
-if(path[1] == "order.html") {
+if(path[path.length -1] == "order.html") {
     placeOrder();
 
-}else if(path[1] == "index.html" || path[1] == "") {
+}else if(path[path.length -1] == "index.html" || path[path.length -1] == "") {
     imgSlide();
-}else if(path[1] == "review.html") {
-
-    renderUser();
-}else if (path[2] == "order.html") {
-    placeOrder();
-    
-}else if(path[2] == "index.html" || path[2] == "") {
-    imgSlide();
-}else if(path[2] == "review.html") {
+}else if(path[path.length -1] == "review.html") {
 
     renderUser();
 }
@@ -50,6 +40,4 @@ function slideIn(target) {
         opacity: [0, 1],
       });
 }
-
-
 
