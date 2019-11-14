@@ -14,8 +14,8 @@ if(path[path.length -1] == "order.html") {
 
 }else if(path[path.length -1] == "index.html" || path[path.length -1] == "") {
     imgSlide();
-}else if(path[path.length -1] == "review.html") {
 
+}else if(path[path.length -1] == "review.html") {
     renderUser();
 }
 

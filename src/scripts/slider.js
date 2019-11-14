@@ -4,7 +4,6 @@ import {fadeIn} from './index';
 
 function imgSlide() {
 
-
     let index = 0;
     let leftBtn = document.querySelector(".left-btn");
     let rightBtn = document.querySelector(".right-btn");
@@ -26,7 +25,6 @@ function imgSlide() {
             images[index].classList.remove("hide");
             images[index-1].classList.add("hide");
         }
-
      });
 
      leftBtn.addEventListener("click", function(){

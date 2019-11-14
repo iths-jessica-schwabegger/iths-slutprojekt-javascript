@@ -84,6 +84,7 @@ function chooseRoom() {
     let input = document.querySelector("input");
     let finalBox = document.querySelector(".final-section");
     let myArr = [];
+    input.value = "";
 
     for (let room of rooms) {
         room.addEventListener("click", event => {
@@ -110,22 +111,26 @@ function chooseRoom() {
         });
     }
 
-    input.addEventListener("change", function(){
+    //let inputArr = inputDebug(input);
 
-            let myArea = input.value;
-            let oldErrors = document.querySelectorAll(".error");
-            
+    input.addEventListener("keyup", event =>{
+
+        let myArea = input.value;
+        let oldErrors = document.querySelectorAll(".error");
+        let num = 2;
+
+        if (event.keyCode == 13) {
+
             for(let error of oldErrors){
                 error.remove();
             }
+                 
             if (myArea > 15) {
-
                 let areaBox = document.querySelector(".area-section .grid");
                 let error = document.createElement("p");
                 error.classList.add("gridmid");
                 error.classList.add("error");
                 areaBox.appendChild(error).innerText = "That room is too big!";
-
             }else {
                 myArr.push(myArea);
                 areaBox.classList.add("hide");
@@ -133,16 +138,22 @@ function chooseRoom() {
                 fadeIn(finalBox);
                 confirmOrder(myArr);
             }
+            console.log(typeof myArea);
+            console.log(typeof num);
+        }
 
+
+    
     });
+
 
     for (let button of closeBtns) {
         button.addEventListener("click", function(){
 
-                roomBox.classList.add("hide");
-                styleBox.classList.add("hide");
-                areaBox.classList.add("hide");
-                finalBox.classList.add("hide");
+            roomBox.classList.add("hide");
+            styleBox.classList.add("hide");
+            areaBox.classList.add("hide");
+            finalBox.classList.add("hide");
 
         });
     }
@@ -164,3 +175,19 @@ function removeUnderline(myStr) {
 }
 
 
+function inputDebug(input) {
+
+    let inputArr = [];
+    input.addEventListener("keyup", event =>{
+    
+        if (event.keyCode < 48 || event.keyCode > 57) {
+
+            inputArr.push(event.keyCode);
+        
+        }
+        
+    });
+    return inputArr;
+}
+
+//function closePage()

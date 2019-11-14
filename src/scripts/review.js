@@ -14,16 +14,12 @@ async function baconIpsum() {
     return responseBody;
 }
 
-function randomStarRating() {
-    let starList = document.querySelectorAll(".star");
+function randomStarRating(starsContainer) {
+    let starList = starsContainer.querySelectorAll(".star");
     let random = Math.floor(Math.random() * 5);
-    let index = 0;
 
-    for (let star of starList) {
-        if (index <= random) {
-            star.classList.add("clicked");
-        }
-        index++;
+    for (let i = 0; i < random; i++) {   
+            starList[i].classList.add("clicked");
     }
     
 }
@@ -32,22 +28,19 @@ async function renderUser() {
     let userImg = document.querySelectorAll(".user-img");
     let userText = document.querySelectorAll(".user-text");
     let userName = document.querySelectorAll(".name");
-    let list = await getUser();
+    let userList = await getUser();
     let index = 0;
 
     for(let box of reviewBox) {
-    
-    userImg[index].src = list[index].picture.large;
-    
-    let paragraph = await baconIpsum();
-    userText[index].innerText = paragraph;
+        
+        randomStarRating(box.querySelector(".stars"));
+        userImg[index].src = userList[index].picture.large;
+        
+        let paragraph = await baconIpsum();
+        userText[index].innerText = paragraph;
 
-    userName[index].innerText = list[index].name.first + " " + list[index].name.last;
-
-    randomStarRating();
-    //console.log(index);
-    index++;
-    
+        userName[index].innerText = userList[index].name.first + " " + userList[index].name.last;
+        index++;
     }
 }
 
