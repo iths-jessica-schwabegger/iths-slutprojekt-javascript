@@ -10,7 +10,7 @@ module.exports = {
   },
   
   output: {
-    path: Path.join(__dirname, '../build'),
+    path: Path.join(__dirname, '../docs'),
     filename: 'js/[name].js'
   },
   optimization: {
