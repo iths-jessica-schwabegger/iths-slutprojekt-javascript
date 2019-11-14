@@ -14,25 +14,6 @@ async function baconIpsum() {
     return responseBody;
 }
 
-
-async function renderUser() {
-
-    let userImg = document.querySelector(".user-img");
-    let userText = document.querySelector(".user-text");
-    let userName = document.querySelector(".name");
-
-    let list = await getUser();
-    userImg.src = list[0].picture.large;
-
-    let paragraph = await baconIpsum();
-    userText.innerText = paragraph;
-
-    userName.innerText = list[0].name.first + " " + list[0].name.last;
-
-    randomStarRating();
-
-}
-
 function randomStarRating() {
     let starList = document.querySelectorAll(".star");
     let random = Math.floor(Math.random() * 5);
@@ -44,4 +25,30 @@ function randomStarRating() {
         }
         index++;
     }
+    
 }
+async function renderUser() {
+    let reviewBox = document.querySelectorAll(".review-box");
+    let userImg = document.querySelectorAll(".user-img");
+    let userText = document.querySelectorAll(".user-text");
+    let userName = document.querySelectorAll(".name");
+    let list = await getUser();
+    let index = 0;
+
+    for(let box of reviewBox) {
+    
+    userImg[index].src = list[index].picture.large;
+    
+    let paragraph = await baconIpsum();
+    userText[index].innerText = paragraph;
+
+    userName[index].innerText = list[index].name.first + " " + list[index].name.last;
+
+    randomStarRating();
+    //console.log(index);
+    index++;
+    
+    }
+}
+
+
