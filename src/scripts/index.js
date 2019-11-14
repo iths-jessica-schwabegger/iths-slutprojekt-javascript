@@ -19,6 +19,14 @@ if(path[1] == "order.html") {
 }else if(path[1] == "review.html") {
 
     renderUser();
+}else if (path[2] == "order.html") {
+    placeOrder();
+    
+}else if(path[2] == "index.html" || path[2] == "") {
+    imgSlide();
+}else if(path[2] == "review.html") {
+
+    renderUser();
 }
 
 
