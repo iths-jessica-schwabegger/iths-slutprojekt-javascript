@@ -124,16 +124,23 @@ function chooseRoom() {
                 error.remove();
             }
                  
-            if (myArea > 15) {
+            if (myArea > 15 || myArea < 1) {
                 let error = document.createElement("p");
                 error.classList.add("gridmid");
                 error.classList.add("error");
-                errorBox.appendChild(error).innerText = "That room is too big!";
+                errorBox.appendChild(error).innerText = "Invalid number. Try again!";
             }else if(isNaN(myArea)) {
                 let error = document.createElement("p");
                 error.classList.add("gridmid");
                 error.classList.add("error");
                 errorBox.appendChild(error).innerText = "That is not a number!";
+            }else if (myArea == +1){
+                myArea = "1";
+                myArr.push(myArea);
+                areaBox.classList.add("hide");
+                finalBox.classList.remove("hide");
+                fadeIn(finalBox); //Inte så snyggt men det funkar :):)
+                confirmOrder(myArr);
             }else {
                 myArr.push(myArea);
                 areaBox.classList.add("hide");
