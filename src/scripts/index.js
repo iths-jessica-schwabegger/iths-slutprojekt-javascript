@@ -21,14 +21,11 @@ if(path[path.length -1] == "order.html") {
 
 
 function fadeIn(target) {
-
     anime({
       targets: target,
-      //translateX: -250,
       opacity: [0, 1],
       easing: "linear",
       duration: 1000
-
     });
 }
 
@@ -38,6 +35,6 @@ function slideIn(target) {
         translateX: 550,
         delay: 1000,
         opacity: [0, 1],
-      });
+    });
 }
 

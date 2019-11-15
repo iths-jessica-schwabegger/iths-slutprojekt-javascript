@@ -54,6 +54,7 @@ body {
     height: 20rem;
     width: 20rem;
     border-radius: 50%;
+    animation: zoom 1.5s ease;
   }
   .fade-in {
     opacity: 0;
@@ -278,4 +279,9 @@ div {
   p {
     margin: 0;
   }
+}
+
+@keyframes zoom{
+  0%{transform: scale(0.5);}
+  100%{transform: scale(1);}
 }

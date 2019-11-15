@@ -2,7 +2,6 @@ export {placeOrder};
 import {fadeIn, slideIn} from './index';
 
 function placeOrder() {
-
     let orderBtn = document.querySelector(".rdy-btn");
     let roomBox = document.querySelector(".room-section");
     slideIn(orderBtn);
@@ -10,8 +9,7 @@ function placeOrder() {
     orderBtn.addEventListener("click", function(){  
         roomBox.classList.remove("hide");
         chooseRoom();
-        fadeIn(roomBox);
-
+        //fadeIn(roomBox);
     });
 }
 
@@ -20,12 +18,10 @@ function confirmOrder(myArr) {
     let articles = document.querySelectorAll(".final-section article");
     
     for(let article of articles) {
-
         let oldParagraphs = article.querySelectorAll(".content");
 
         for (let paragraph of oldParagraphs) {
             paragraph.remove();
-
         }
         if (i <= myArr.length -1) {
             let p = document.createElement("p");
@@ -34,12 +30,10 @@ function confirmOrder(myArr) {
             p.innerText = removeUnderline(myArr[i]).toUpperCase();
             p.style.color = "rgb(53, 51, 51)";
             i++;
-
         }else {
             let p = document.createElement("p");
             p.classList.add("content");
             article.appendChild(p);
-            // getPrice(myArr);
             p.innerText = getPrice(myArr);
             p.style.color = "rgb(53, 51, 51)";
         }
@@ -58,12 +52,10 @@ function getPrice(myArr) {
             kids_room: 800,
             entrance: 500
         },
-
         area: {
 
             1: 300, 2: 300, 3: 350, 4: 400, 5: 400, 6: 500, 7: 550, 8: 600, 9: 600,
             10: 650, 11: 750, 12: 800, 13: 1000, 14: 1100, 15: 1250,
-
         }
     };
 
@@ -88,14 +80,12 @@ function chooseRoom() {
 
     for (let room of rooms) {
         room.addEventListener("click", event => {
-            
             let myRoom = event.target.classList.value;
 
-                myArr.push(myRoom);
-                roomBox.classList.add("hide");
-                styleBox.classList.remove("hide");
-                fadeIn(styleBox);
-        
+            myArr.push(myRoom);
+            roomBox.classList.add("hide");
+            styleBox.classList.remove("hide");
+            fadeIn(styleBox); //Inte så snyggt men det funkar :):)
         });
     }
 
@@ -103,21 +93,16 @@ function chooseRoom() {
         style.addEventListener("click", event => {
             let myStyle = event.target.classList.value;
 
-                myArr.push(myStyle);
-                styleBox.classList.add("hide");
-                areaBox.classList.remove("hide");
-                fadeIn(areaBox);
-  
+            myArr.push(myStyle);
+            styleBox.classList.add("hide");
+            areaBox.classList.remove("hide");
+            fadeIn(areaBox); //Inte så snyggt men det funkar :):)
         });
     }
 
-    //let inputArr = inputDebug(input);
-
     input.addEventListener("keyup", event =>{
-
         let myArea = input.value;
         let oldErrors = document.querySelectorAll(".error");
-        let num = 2;
 
         if (event.keyCode == 13) {
 
@@ -135,43 +120,34 @@ function chooseRoom() {
                 myArr.push(myArea);
                 areaBox.classList.add("hide");
                 finalBox.classList.remove("hide");
-                fadeIn(finalBox);
+                fadeIn(finalBox); //Inte så snyggt men det funkar :):)
                 confirmOrder(myArr);
             }
-            console.log(typeof myArea);
-            console.log(typeof num);
+            //console.log(typeof myArea);
         }
-
-
-    
     });
-
 
     for (let button of closeBtns) {
         button.addEventListener("click", function(){
-
             roomBox.classList.add("hide");
             styleBox.classList.add("hide");
             areaBox.classList.add("hide");
             finalBox.classList.add("hide");
-
         });
     }
 }
 
 function removeUnderline(myStr) {
-
     let newString = "";
 
     for (let i = 0; i < myStr.length; i++) {
         if (myStr[i] != "_") {
             newString = newString + myStr[i];
-        }else {
+        }else{
             newString = newString + " ";
         }
     }
     return newString;
-
 }
 
 
@@ -181,11 +157,8 @@ function inputDebug(input) {
     input.addEventListener("keyup", event =>{
     
         if (event.keyCode < 48 || event.keyCode > 57) {
-
             inputArr.push(event.keyCode);
-        
         }
-        
     });
     return inputArr;
 }

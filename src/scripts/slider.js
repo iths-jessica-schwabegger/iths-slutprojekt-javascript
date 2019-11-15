@@ -1,14 +1,14 @@
 export {imgSlide, fadeIn};
 import {fadeIn} from './index';
 
+let index = 0;
 
 function imgSlide() {
-
-    let index = 0;
     let leftBtn = document.querySelector(".left-btn");
     let rightBtn = document.querySelector(".right-btn");
     let images = document.querySelectorAll(".pictures");
     fadeIn(images);
+    setInterval(autoImgSlide, 3000);
     
     rightBtn.addEventListener("click", function(){
         index++;
@@ -25,9 +25,9 @@ function imgSlide() {
             images[index].classList.remove("hide");
             images[index-1].classList.add("hide");
         }
-     });
+    });
 
-     leftBtn.addEventListener("click", function(){
+    leftBtn.addEventListener("click", function(){
         index--;
         fadeIn(images);
 
@@ -42,12 +42,16 @@ function imgSlide() {
             images[index].classList.remove("hide");
             images[index+1].classList.add("hide");
         }
-     });
-
+    });
 }
 
+function autoImgSlide() {
+    let images = document.querySelectorAll(".pictures");
+    fadeIn(images);
+    images[index].classList.add("hide");
+    index = (index + 1) % images.length;
+    images[index].classList.remove("hide");
 
-
-
+}
 
 

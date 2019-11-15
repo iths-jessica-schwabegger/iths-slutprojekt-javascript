@@ -32,7 +32,6 @@ async function renderUser() {
     let index = 0;
 
     for(let box of reviewBox) {
-        
         randomStarRating(box.querySelector(".stars"));
         userImg[index].src = userList[index].picture.large;
         
