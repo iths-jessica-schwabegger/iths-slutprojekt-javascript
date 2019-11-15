@@ -1,6 +1,19 @@
 export {placeOrder};
 import {fadeIn, slideIn} from './index';
 
+function removeUnderline(myStr) {
+    let newString = "";
+
+    for (let i = 0; i < myStr.length; i++) {
+        if (myStr[i] != "_") {
+            newString = newString + myStr[i];
+        }else{
+            newString = newString + " ";
+        }
+    }
+    return newString;
+}
+
 function placeOrder() {
     let orderBtn = document.querySelector(".rdy-btn");
     let roomBox = document.querySelector(".room-section");
@@ -103,6 +116,7 @@ function chooseRoom() {
     input.addEventListener("keyup", event =>{
         let myArea = input.value;
         let oldErrors = document.querySelectorAll(".error");
+        let errorBox = document.querySelector(".area-section .grid");
 
         if (event.keyCode == 13) {
 
@@ -111,11 +125,15 @@ function chooseRoom() {
             }
                  
             if (myArea > 15) {
-                let areaBox = document.querySelector(".area-section .grid");
                 let error = document.createElement("p");
                 error.classList.add("gridmid");
                 error.classList.add("error");
-                areaBox.appendChild(error).innerText = "That room is too big!";
+                errorBox.appendChild(error).innerText = "That room is too big!";
+            }else if(isNaN(myArea)) {
+                let error = document.createElement("p");
+                error.classList.add("gridmid");
+                error.classList.add("error");
+                errorBox.appendChild(error).innerText = "That is not a number!";
             }else {
                 myArr.push(myArea);
                 areaBox.classList.add("hide");
@@ -123,7 +141,6 @@ function chooseRoom() {
                 fadeIn(finalBox); //Inte så snyggt men det funkar :):)
                 confirmOrder(myArr);
             }
-            //console.log(typeof myArea);
         }
     });
 
@@ -137,30 +154,4 @@ function chooseRoom() {
     }
 }
 
-function removeUnderline(myStr) {
-    let newString = "";
 
-    for (let i = 0; i < myStr.length; i++) {
-        if (myStr[i] != "_") {
-            newString = newString + myStr[i];
-        }else{
-            newString = newString + " ";
-        }
-    }
-    return newString;
-}
-
-
-function inputDebug(input) {
-
-    let inputArr = [];
-    input.addEventListener("keyup", event =>{
-    
-        if (event.keyCode < 48 || event.keyCode > 57) {
-            inputArr.push(event.keyCode);
-        }
-    });
-    return inputArr;
-}
-
-//function closePage()
