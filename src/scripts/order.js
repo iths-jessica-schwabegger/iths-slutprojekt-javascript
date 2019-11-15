@@ -78,6 +78,16 @@ function getPrice(myArr) {
     return totalPrice;
 }
 
+function numObject(input) {
+
+    let numbers = {
+
+        "+1": "1", "+2": "2", "+3": "3", "+4": "4", "+5": "5", "+6": "6", "+7": "7", "+8": "8", "+9": "9",
+    }
+    console.log(numbers[input]);
+    return numbers[input];
+}
+
 function chooseRoom() {
 
     let roomBox = document.querySelector(".room-section");
@@ -134,9 +144,9 @@ function chooseRoom() {
                 error.classList.add("gridmid");
                 error.classList.add("error");
                 errorBox.appendChild(error).innerText = "That is not a number!";
-            }else if (myArea == +1){
-                myArea = "1";
-                myArr.push(myArea);
+            }else if (myArea.includes("+")){
+                let newNum = numObject(myArea);
+                myArr.push(newNum);
                 areaBox.classList.add("hide");
                 finalBox.classList.remove("hide");
                 fadeIn(finalBox); //Inte så snyggt men det funkar :):)
